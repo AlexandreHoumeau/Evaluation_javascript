@@ -26,7 +26,11 @@ DrawBarre.prototype.loading = function() {
   setInterval(function() {
     this.elSegment.style.width = this.elSegment.dataset.progress + '%'; 
     this.elSegment.dataset.progress = parseInt(this.elSegment.dataset.progress) + 1;
-  }.bind(this), 500);
+
+    if (this.elSegment.dataset.progress > 100) {
+      clearInterval(this.interval);
+    }
+  }.bind(this),100);
 
 }
 
