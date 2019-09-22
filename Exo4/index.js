@@ -3,12 +3,12 @@
  *
 */
 var WorldMap = function WorldMap(){
-
+	
 }
 
 WorldMap.prototype.render = function() {
 	this.renderWorldMap();
-	//this.interactiveWorldMap();
+	this.interactiveWorldMap();
 };
 
 WorldMap.prototype.renderWorldMap = function() {
@@ -20,20 +20,35 @@ WorldMap.prototype.renderWorldMap = function() {
 	elObj.style.width = '100vw';
 	elObj.style.height = '100vh';
 	elObj.classList.add("world-map");
-	elObj.id = "world"
+	elObj.id = "svg-object"
 
 	elDiv.appendChild(elObj);
 	elBody.appendChild(elDiv);
 
-	this.interactiveWorldMap(elObj);
+	/*this.interactiveWorldMap(elObj);*/
 };
 
-WorldMap.prototype.interactiveWorldMap = function(el) {
+WorldMap.prototype.interactiveWorldMap = function() {
 	
-	console.log(el);
-	var a = el.getElementsByTagName('path');
-	console.log(a);
+	
+	/*this.paths.forEach(function(paths) {
+		path.addEventLIstener('mouseenter', function(e) {
+			console.log('salut');
+		})
+	})*/
 };
 
 var worldMap = new WorldMap();
 worldMap.render();
+
+window.addEventListener('load', function () {
+	var object = document.getElementsByTagName('object').child();
+
+	console.log(object);
+	console.log(object.length);
+	console.log(object[0]);
+
+	
+
+	
+})
