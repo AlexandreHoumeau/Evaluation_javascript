@@ -10,8 +10,7 @@ var MyMorpionXO = function MyMorpionXO(){
 	window.addEventListener('load', function(){
 		this.cases = document.querySelectorAll('.case');
 	
-	});
-	
+	});	
 }
 
 /**
@@ -41,7 +40,6 @@ MyMorpionXO.prototype.game = function(el){
 	});
 }
 
-
 /**
  * checkWinner
  * @param{button}
@@ -49,41 +47,43 @@ MyMorpionXO.prototype.game = function(el){
  * @param{player} array
 */
 MyMorpionXO.prototype.checkWinner = function(){
-	
     if (cases[0].innerHTML !== '' && cases[0].innerHTML === cases[1].innerHTML && cases[1].innerHTML === cases[2].innerHTML) {
-        this.showWinner(cases[0].innerHTML);
+        alert('The player ' + cases[0].innerHTML + ' won !');
+        window.location.reload();
 
     } else if (cases[3].innerHTML !== '' && cases[3].innerHTML === cases[4].innerHTML && cases[4].innerHTML === cases[5].innerHTML) {
-        this.showWinner(cases[3].innerHTML);
+        alert('The player ' + cases[3].innerHTML + ' won !');
+        window.location.reload();
 
     } else if (cases[6].innerHTML !== '' && cases[6].innerHTML === cases[7].innerHTML && cases[7].innerHTML === cases[8].innerHTML) {
-        this.showWinner(cases[6].innerHTML);
+        alert('The player ' + cases[6].innerHTML + ' won !');
+        window.location.reload();
 
     }
     else if (cases[0].innerHTML !== '' && cases[0].innerHTML === cases[3].innerHTML && cases[3].innerHTML === cases[6].innerHTML) {
-        this.showWinner(cases[0].innerHTML);
+        alert('The player ' + cases[0].innerHTML + ' won !');
+        window.location.reload();
 
     } else if (cases[1].innerHTML !== '' && cases[1].innerHTML === cases[4].innerHTML && cases[4].innerHTML === cases[7].innerHTML) {
-        this.showWinner(cases[1].innerHTML);
+        alert('The player ' + cases[1].innerHTML + ' won !');
+        window.location.reload();
 
     } else if (cases[2].innerHTML !== '' && cases[2].innerHTML === cases[5].innerHTML && cases[5].innerHTML === cases[8].innerHTML) {
-        this.showWinner(cases[2].innerHTML);
+        alert('The player ' + cases[2].innerHTML + ' won !');
+        window.location.reload();
     }
     else if (cases[0].innerHTML !== '' && cases[0].innerHTML === cases[4].innerHTML && cases[4].innerHTML === cases[8].innerHTML) {
-        this.showWinner(cases[0].innerHTML);
+        alert('The player ' + cases[0].innerHTML + ' won !');
+        window.location.reload();
     } else if (cases[2].innerHTML !== '' && cases[2].innerHTML === cases[4].innerHTML && cases[4].innerHTML === cases[6].innerHTML) {
-        this.showWinner(cases[2].innerHTML);
+        alert('The player ' + cases[2].innerHTML + ' won !');
+        window.location.reload();
+    } else if (compt === 9) {
+    	alert('Match nul');
+    	window.location.reload();
+
     }
 };
-
-/**
- * showWinner
-*/
-MyMorpionXO.prototype.showWinner = function(){
-	console.log('Bravo le joueur a gagné !')
-};
-
-
 
 /**
  * buttonrender
@@ -97,6 +97,7 @@ MyMorpionXO.prototype.buttonrender = function(){
 		for(var j = 0; j < 3; j++) {
 			var elBut = document.createElement('button');
 			this.game(elBut);
+
 			elBut.addEventListener('click', this.checkWinner);
 			elDiv.appendChild(elBut);
 
@@ -114,8 +115,6 @@ MyMorpionXO.prototype.buttonrender = function(){
 		elDiv.style.justifyContent = 'center';
 	}	
 }
-
-
 
 var compt = 0;
 var myMorpionXO = new MyMorpionXO();
