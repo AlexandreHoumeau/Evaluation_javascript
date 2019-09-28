@@ -8,31 +8,26 @@ var WorldMap = function WorldMap(){
 
 WorldMap.prototype.render = function() {
 	this.renderWorldMap();
-	//this.interactiveWorldMap();
+	this.interactiveWorldMap();
 };
 
 WorldMap.prototype.renderWorldMap = function() {
 	var elBody = document.querySelector('body');
-	var elDiv = document.createElement('div');
 	var elObj = document.createElement('object');
 
 	elObj.data = "World_map.svg";
 	elObj.style.width = '100vw';
 	elObj.style.height = '100vh';
-	elObj.classList.add("world-map");
-	elObj.id = "world"
+	elObj.id = 'svg';
 
-	elDiv.appendChild(elObj);
-	elBody.appendChild(elDiv);
+	elBody.appendChild(elObj);
 
-	this.interactiveWorldMap(elObj);
+	// this.interactiveWorldMap(elObj);
 };
 
-WorldMap.prototype.interactiveWorldMap = function(el) {
-	
-	console.log(el);
-	var a = el.getElementsByTagName('path');
-	console.log(a);
+WorldMap.prototype.interactiveWorldMap = function() {
+	var svg = document.getElementById('svg');
+	console.log(svg);
 };
 
 var worldMap = new WorldMap();
