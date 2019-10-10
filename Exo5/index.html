@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex4</title>
+</head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body>
+
+<form >
+	<div class="form-group">
+		<label for="FisrtName">Frist Name</label>
+		<input type="text" class="form-control" id="inputFirstName" name="FirstName" placeholder="Enter First Name" onblur="checkName(this)">
+		 <small id="alertFirstName" class="form-text text-danger"></small>
+	</div>
+	
+	<div class="form-group">
+		<label for="lastName">Last Name</label>
+		<input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Enter Last Name" onblur="checkName(this)">
+	</div>
+
+  	<div class="form-group">
+	    <label for="email">Email address</label>
+	    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onblur="checkMail(this)">
+  	</div>
+
+	<div class="form-group">
+    	<label for="password">Password</label>
+	    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" onblur="checkPassword(this)">
+	</div>
+
+  <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  <p id="alertName" class="text-danger invisible">First and last name can't have any numbers in it !</p>
+  <p id="alertEmail" class="text-danger invisible">Your mail is not Valide !</p>
+  <p id="alertPassword" class="text-danger invisible">The password must have 1 uppercase letter 1 lowercase letter 1 number 1 special character and a minimal length of 8 !</p>
+</form>
+
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>
+
