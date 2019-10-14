@@ -1,5 +1,8 @@
 var squareSize = 50;
+var ship1 = 0;
 var gameBoardContainer = document.getElementById("gameboard");
+var ship = document.getElementById('ships');
+
 
 // make the grid columns and rows
 for (i = 0; i < 12; i++) {
@@ -45,23 +48,25 @@ function fireTorpedo(e) {
 	if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
 		var row = e.target.id.substring(1,2);
-		var col = e.target.id.substring(2,3);
+		var col = e.target.id.substring(3,4);
         //alert("Clicked on row " + row + ", col " + col);
 				
 		// if player clicks a square with no ship, change the color and change square's value
-		if (gameBoard[row][col] == 0) {
+		if (gameBoard[row][col] === 0) {
 			e.target.style.background = 'blue';
 			// set this square's value to 3 to indicate that they fired and missed
-			gameBoard[row][col] = 3;
+			gameBoard[row][col] = 0;
 			
 		// if player clicks a square with a ship, change the color and change square's value
-		} else if (gameBoard[row][col] == 1) {
+		} else if (gameBoard[row][col] != 0) {
 			e.target.style.background = 'red';
-			// set this square's value to 2 to indicate the ship has been hit
-			gameBoard[row][col] = 2;
+            // set this square's value to 2 to indicate the ship has been hit
+            checkGame(gameBoard[row][col]);
+            gameBoard[row][col] = 2;
 			
 			// increment hitCount each time a ship is hit
-			hitCount++;
+           
+            hitCount++;
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
 			if (hitCount == 17) {
 				alert("All enemy battleships have been defeated! You win!");
@@ -74,3 +79,16 @@ function fireTorpedo(e) {
     }
     e.stopPropagation();
 }
+
+function checkGame(e) {
+    console.log(e)
+    
+
+    if(e === 1){
+        ship1++; 
+        if(ship1 === 2){
+            var torpilleur = document.querySelector('#torpilleur').style.color = 'red';
+        }
+    }   
+}
+
