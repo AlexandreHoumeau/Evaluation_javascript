@@ -2,7 +2,8 @@ var squareSize = 50;
 var ship1 = 0;
 var gameBoardContainer = document.getElementById("gameboard");
 var ship = document.getElementById('ships');
-
+var ships = [0,2,3,4,5,5]
+var array = ['A','B','C','D','E','F','G','H','I','J','K','L'];
 
 // make the grid columns and rows
 for (i = 0; i < 12; i++) {
@@ -13,7 +14,7 @@ for (i = 0; i < 12; i++) {
 		gameBoardContainer.appendChild(square);
 
     // give each div element a unique id based on its row and column, like "s00"
-		square.id = 's' + j + i;			
+        square.id = array[i] + j;		
 		
 		// set each grid square's coordinates: multiples of the current row or column number
 		var topPosition = j * squareSize;
@@ -47,8 +48,9 @@ function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
 	if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
-		var row = e.target.id.substring(1,2);
-		var col = e.target.id.substring(3,4);
+		var row = parseInt(e.target.id.substring(1,3));
+        var col = e.target.id.charCodeAt(0)-65;
+
         //alert("Clicked on row " + row + ", col " + col);
 				
 		// if player clicks a square with no ship, change the color and change square's value
@@ -91,4 +93,5 @@ function checkGame(e) {
         }
     }   
 }
+
 
