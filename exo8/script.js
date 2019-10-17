@@ -1,5 +1,11 @@
 var squareSize = 50;
 var ship1 = 0;
+var ship2 = 0;
+var ship3 = 0;
+var ship4 = 0; 
+var ship5 = 0;  
+var count = 0;
+
 var gameBoardContainer = document.getElementById("gameboard");
 var ship = document.getElementById('ships');
 var ships = [0,2,3,4,5,5]
@@ -63,14 +69,14 @@ function fireTorpedo(e) {
 		} else if (gameBoard[row][col] != 0) {
 			e.target.style.background = 'red';
             // set this square's value to 2 to indicate the ship has been hit
-            checkGame(gameBoard[row][col]);
+            checkShip(gameBoard[row][col]);
             gameBoard[row][col] = 2;
 			
 			// increment hitCount each time a ship is hit
            
             hitCount++;
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
-			if (hitCount == 17) {
+			if (count === 5) {
 				alert("All enemy battleships have been defeated! You win!");
 			}
 			
@@ -82,14 +88,46 @@ function fireTorpedo(e) {
     e.stopPropagation();
 }
 
-function checkGame(e) {
-    console.log(e)
-    
+function checkShip(e) {
+    console.log(e);
 
     if(e === 1){
         ship1++; 
         if(ship1 === 2){
-            var torpilleur = document.querySelector('#torpilleur').style.color = 'red';
+            var torpilleur = document.querySelector('#torpilleur').classList.add('sank');
+            count++;
+        }
+    }
+
+    if(e === 2){
+        ship2++; 
+        if(ship2 === 3){
+            var torpilleur = document.querySelector('#Contre-Torpilleur').classList.add('sank');
+            count++;
+        }
+    }
+
+    if(e === 3){
+        ship3++; 
+        if(ship3 === 4){
+            var torpilleur = document.querySelector('#Croiseur').classList.add('sank');
+            count++;
+        }
+    }
+
+    if(e === 4){
+        ship4++; 
+        if(ship4 === 5){
+            var torpilleur = document.querySelector('#Porte-Avion1').classList.add('sank');
+            count++;
+        }
+    }
+
+    if(e === 5){
+        ship5++; 
+        if(ship5 === 5){
+            var torpilleur = document.querySelector('#Porte-Avion2').classList.add('sank');
+            count++;
         }
     }   
 }

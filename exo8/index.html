@@ -9,10 +9,10 @@
 <body>
     <h1>Bataille Navale</h1>
     <div class="ships">
-            <h4> Porte Avion 1 </h4>
-            <h4> Porte Avion 2 </h4>
-            <h4> Croiseur </h4>
-            <h4> Contre-Torpilleur </h4>
+            <h4 id="Porte-Avion1"> Porte Avion 1 </h4>
+            <h4 id="Porte-Avion2"> Porte Avion 2 </h4>
+            <h4 id="Croiseur"> Croiseur </h4>
+            <h4 id="Contre-Torpilleur"> Contre-Torpilleur </h4>
             <h4 id="torpilleur"> Torpilleur </h4>
     </div>
     
@@ -25,9 +25,14 @@
             margin: 60px auto;
             width: 70%;
             max-width: 950px;
+            font-family: arial;
         }
         .ships{
             display: flex;
+        }
+        .sank{
+            text-decoration: line-through;
+            color: red;
         }
         h4{
             margin: 10px;
