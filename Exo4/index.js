@@ -10,16 +10,16 @@ WorldMap.prototype.render = function() {
 };
 
 WorldMap.prototype.renderWorldMap = function() {
-	var elBody = document.querySelector('body');
-	var elObj = document.createElement('object');
+	// var elBody = document.querySelector('body');
+	// var elObj = document.createElement('object');
 
-	elObj.data = "World_map.svg";
-	elObj.style.width = '100vw';
-	elObj.style.height = '100vh';
+	// elObj.data = "World_map.svg";
+	// elObj.style.width = '100vw';
+	// elObj.style.height = '100vh';
 
-	elBody.appendChild(elObj);
+	// elBody.appendChild(elObj);
 
-	this.interactiveWorldMap();
+	// this.interactiveWorldMap();
 };
 
 WorldMap.prototype.interactiveWorldMap = function() {
