@@ -7,6 +7,7 @@ var WorldMap = function WorldMap(){
 }
 WorldMap.prototype.render = function() {
 	this.renderWorldMap();
+	this.interactiveWorldMap();
 };
 
 WorldMap.prototype.renderWorldMap = function() {
@@ -19,7 +20,7 @@ WorldMap.prototype.renderWorldMap = function() {
 
 	// elBody.appendChild(elObj);
 
-	// this.interactiveWorldMap();
+	
 };
 
 WorldMap.prototype.interactiveWorldMap = function() {
