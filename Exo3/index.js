@@ -1,5 +1,4 @@
-'use strict';
-
+'use strict'
 /**
  * MyMorpionXO
  * @constructor
@@ -8,7 +7,14 @@
 */
 var MyMorpionXO = function MyMorpionXO(){
 	window.addEventListener('load', function(){
-		this.cases = document.querySelectorAll('.case');	
+		this.cases = document.querySelectorAll('.case');
+		this.container = document.querySelectorAll('#container');
+		this.score = document.getElementsByTagName('div')[0];
+		this.scoreX = score.querySelector('.X');
+		this.score0 = score.querySelector('.O');
+		this.compt = 0;
+		this.player = ['X','O'];
+		this.scores = [0 , 0];
 
 	});	
 }
@@ -26,19 +32,17 @@ MyMorpionXO.prototype.render = function(){
 */
 MyMorpionXO.prototype.game = function(el){
 
-	var player = ['X', 'O'];
-
-	
 	el.addEventListener('click', function() {
 		
 		if (el.innerHTML.length === 0){
 			el.innerHTML = player[compt % 2];
 			compt++;
+			this.checkWinner();
 		}
 		else {
 			console.log('La case est déja ocuppée !');
 		}
-	});
+	}.bind(this));
 
 }
 
@@ -51,14 +55,11 @@ MyMorpionXO.prototype.game = function(el){
 MyMorpionXO.prototype.checkWinner = function(){
 
 	if (cases[0].innerHTML !== '' && cases[0].innerHTML === cases[1].innerHTML && cases[1].innerHTML === cases[2].innerHTML) {
-	    alert('The player ' + cases[0].innerHTML + ' won !');
-	    score.querySelector('.' + cases[0].innerHTML).innerHTML =+ 1;
-	    this.cases.location.reload();
+		this.winner(scores[0], player[score[0]%2]);
 	        
     } else if (cases[3].innerHTML !== '' && cases[3].innerHTML === cases[4].innerHTML && cases[4].innerHTML === cases[5].innerHTML) {
         alert('The player ' + cases[3].innerHTML + ' won !');
        	score.querySelector('.' + cases[3].innerHTML).innerHTML =+ 1;
-
         window.location.reload();
 
     } else if (cases[6].innerHTML !== '' && cases[6].innerHTML === cases[7].innerHTML && cases[7].innerHTML === cases[8].innerHTML) {
@@ -97,45 +98,41 @@ MyMorpionXO.prototype.checkWinner = function(){
     } 
 };
 
+MyMorpionXO.prototype.winner = function(_scores, _player){
+	
+}
+
 /**
  * buttonrender
 */
 MyMorpionXO.prototype.buttonrender = function(){
 	var elBody = document.querySelector('body');
+	var elDiv = document.createElement('div');
 
 	for (var i = 0; i < 3; i++){
 		var elDiv = document.createElement('div');
 		elDiv.setAttribute('id', 'container');
 		for(var j = 0; j < 3; j++) {
-			var elBut = document.createElement('button');
+			var elBut = document.createElement('div');
 			this.game(elBut);
-			
-			elBut.addEventListener('click', this.checkWinner);
+	
 			elDiv.appendChild(elBut);
 
-			
 			elBut.style.background = 'grey';
 			elBut.style.padding = '70px';
 			elBut.style.borderRadius = '10px';
 			elBut.style.cursor = 'pointer';
 
 			elBut.setAttribute('class', 'case');
-
 		}
 		elBody.appendChild(elDiv);
 		
 		elDiv.style.display = 'flex';
 		elDiv.style.justifyContent = 'center';
 	}	
-
 }
-var compt = 0;
+
 var myMorpionXO = new MyMorpionXO();
 myMorpionXO.render();
 
-var scores = ['X','O'];
-var score = document.getElementsByTagName('div')[0];
-var scoreX = score.querySelector('.X');
-var score0 = score.querySelector('.O')
-console.log(scoreX.innerHTML);
-console.log(score0.innerHTML);
+
