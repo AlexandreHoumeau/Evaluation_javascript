@@ -1,4 +1,4 @@
-function moyenne()
+function computeNotes()
 {	
 	var tableau = new Array(10, 13, 13, 12, 15, 12, 11, 16, 14);
 	var n = tableau.length;
@@ -8,7 +8,6 @@ function moyenne()
 		somme += tableau[i];
 	}
 	var resultat = somme / n;
-
-    console.log(resultat);
-
+	
+	return resultat;
 }
