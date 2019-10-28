@@ -22,8 +22,8 @@ WorldMap.prototype.renderWorldMap = function() {
 	var elObj = document.createElement('object');
 
 	elObj.data = "World_map.svg";
-	elObj.style.width = '70vw';
-	elObj.style.height = '70vh';
+	elObj.style.width = '100vw';
+	elObj.style.height = '80vh';
 	elObj.id = 'svg';
 
 	elBody.appendChild(elObj);	
@@ -39,16 +39,25 @@ WorldMap.prototype.interactiveWorldMap = function() {
 
 		paths.forEach(function(path){
 			path.addEventListener('mouseenter', function(){
-				country.innerHTML = path.id;
-				path.style.fill = 'blue';
+				if(path.style.fill != 'red'){
+					country.innerHTML = path.id;
+					path.style.fill = 'blue';
+				}
 			});
 			path.addEventListener('mouseleave', function(){
-				country.innerHTML = "";
-				path.style.fill = 'black';
+				if (path.style.fill != 'red') {
+					path.style.fill = 'initial';
+				}
 			});
 			path.addEventListener('click', function(){
-				console.log(path.id);
-				path.style.fill = 'red';
+				
+				if (path.style.fill === 'red') {
+					path.style.fill = 'initial';
+				}
+				else{
+					path.style.fill = 'red';
+				}
+
 			})
 		});
 	});
