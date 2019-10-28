@@ -7,7 +7,7 @@ function computeNotes()
 	{
 		somme += tableau[i];
 	}
-	var resultat = somme / n;
-	
-	return resultat;
+	var result = somme / n;
+	console.log(result)
+	return result;
 }
