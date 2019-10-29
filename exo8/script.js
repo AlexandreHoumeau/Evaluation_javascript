@@ -1,3 +1,7 @@
+/** 
+ * checkShip
+ * 
+*/
 var MyBattleships = function(){
     this.squareSize = 50; 
     this.ship1 = 0; 
@@ -12,11 +16,17 @@ var MyBattleships = function(){
     this.ships = document.getElementById('ships');   
 }
 
+/** 
+ * render
+*/
 MyBattleships.prototype.render = function() {
     this.renderGrid();
     this.gameBoardContainer.addEventListener('click', this.fireTorpedo.bind(this), false);
 }
 
+/** 
+ * renderGrid
+*/
 MyBattleships.prototype.renderGrid = function() {
     for (i = 0; i < 12; i++) {
         for (j = 0; j < 12; j++) {
@@ -36,6 +46,9 @@ MyBattleships.prototype.renderGrid = function() {
     }
 }
 
+/** 
+ * fireTorpedo
+*/
 MyBattleships.prototype.fireTorpedo = function(e) {
 
     if (e.target !== e.currentTarget) {
@@ -65,7 +78,9 @@ MyBattleships.prototype.fireTorpedo = function(e) {
     e.stopPropagation();
 }
 
-
+/** 
+ * checkShip
+*/
 MyBattleships.prototype.checkShip = function(e) {
     if(e === 1){
         this.ship1++; 
