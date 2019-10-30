@@ -3,12 +3,14 @@
  * 
 */
 var MyBattleships = function(){
-    this.squareSize = 50; 
+    this.squareSize = 50;
+    //set varaibles for every ship
     this.ship1 = 0; 
     this.ship2 = 0; 
     this.ship3 = 0; 
     this.ship4 = 0; 
     this.ship5 = 0; 
+    //count for the number of ships which are destroyed
     this.count = 0; 
 
     this.array = ['A','B','C','D','E','F','G','H','I','J','K','L'];
@@ -28,14 +30,14 @@ MyBattleships.prototype.render = function() {
  * renderGrid
 */
 MyBattleships.prototype.renderGrid = function() {
+    //two loop that make 12 by 12 cases 
     for (i = 0; i < 12; i++) {
         for (j = 0; j < 12; j++) {
-            
             var square = document.createElement("div");
             this.gameBoardContainer.appendChild(square);
-    
+            //every cases id is made with a letter 'array[i]' and a number 'j'
             square.id = this.array[i] + j;		
-            
+        
             var topPosition = j * this.squareSize;
             var leftPosition = i * this.squareSize;			
             
@@ -52,7 +54,7 @@ MyBattleships.prototype.renderGrid = function() {
 MyBattleships.prototype.fireTorpedo = function(e) {
 
     if (e.target !== e.currentTarget) {
-
+        //Convert the row and the col into numbers. The col is made with a Letter so you have to convert it in ASSII
         var row = parseInt(e.target.id.substring(1,3));
         var col = e.target.id.charCodeAt(0)-65;
 				
@@ -63,7 +65,7 @@ MyBattleships.prototype.fireTorpedo = function(e) {
 			
 		} else if (gameBoard[row][col] != 0) {
 			e.target.style.background = 'red';
-
+            //if the player hit a ship we call the function checkShip
             this.checkShip(gameBoard[row][col]);
          
             gameBoard[row][col] = 8;
@@ -82,9 +84,11 @@ MyBattleships.prototype.fireTorpedo = function(e) {
  * checkShip
 */
 MyBattleships.prototype.checkShip = function(e) {
+    //e is the value of the ship which has been shot 
     if(e === 1){
         this.ship1++; 
         if(this.ship1 === 2){
+            //the class .sank in the css cross the name of the ship which has been destroyed 
             var torpilleur = document.querySelector('#torpilleur').classList.add('sank');
             this.count++;
         }
