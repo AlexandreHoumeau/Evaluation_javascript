@@ -6,6 +6,7 @@
  * return tic tac toe game
 */
 var MyMorpionXO = function MyMorpionXO(){
+	//wait for the morpion to load
 	window.addEventListener('load', function(){
 		this.cases = document.querySelectorAll('.case');
 		this.container = document.getElementById('container');
@@ -36,6 +37,7 @@ MyMorpionXO.prototype.game = function(el){
 	el.addEventListener('click', function() {
 		
 		if (el.innerHTML.length === 0){
+			//modulo 2 of compt return 0 or 1 ->  this way it altern between X and O
 			el.innerHTML = player[compt % 2];
 			compt++;
 			this.checkWinner();
@@ -54,7 +56,7 @@ MyMorpionXO.prototype.game = function(el){
  * @param{player} array
 */
 MyMorpionXO.prototype.checkWinner = function(){
-
+	//if any of this condition is true the function call the function this.winner() with the apropriate argument
 	if (cases[0].innerHTML !== '' && cases[0].innerHTML === cases[1].innerHTML && cases[1].innerHTML === cases[2].innerHTML) {
 		this.winner(cases[0]);
 		
@@ -78,7 +80,7 @@ MyMorpionXO.prototype.checkWinner = function(){
 
     } else if (cases[2].innerHTML !== '' && cases[2].innerHTML === cases[4].innerHTML && cases[4].innerHTML === cases[6].innerHTML) {
         this.winner(cases[2]);
-
+	// if none of those arguments are valide and the game compt equal 9 its the end of the game
 	} else if (compt === 9) {
     	alert('Match nul');
     	this.reloadGame();
@@ -107,10 +109,10 @@ MyMorpionXO.prototype.winner = function(_scores){
 }
 
 MyMorpionXO.prototype.reloadGame = function(){
-	console.log(cases);
-	cases.forEach(cell => {
+	//reload the game by deleting every inner.HTML value in each cells 
+	cases.forEach(function(cell) {
 		cell.innerHTML = '';
-	});
+	  });
 	compt = 0;
 }
 
